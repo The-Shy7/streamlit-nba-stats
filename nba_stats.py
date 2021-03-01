@@ -24,5 +24,16 @@ def load_data(year):
     playerStats = raw.drop(['Rk'], axis = 1) # redundant with index provided by pandas
     return playerStats
 
-playerStats = load_data(selected_year)
+# retrieves nba player stats from the selected 
+# year provided by the user
+playerStats = load_data(selected_year) 
+
+# team selection from sidebar
+sorted_unique_team = sorted(playerStats.Tm.unique())
+selected_team = st.sidebar.multiselect('Team', sorted_unique_team, sorted_unique_team)
+
+# position selection from sidebar
+positions = ['C', 'PF', 'SF', 'PG', 'SG']
+selected_position = st.sidebar.multiselect('Position', positions, positions)
+
 
