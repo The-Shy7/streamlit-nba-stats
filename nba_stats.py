@@ -3,6 +3,12 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import base64
+import ssl
+
+# workaround of SSL certificate verification 
+# failure bug on MacOS and Python 3
+# https://stackoverflow.com/questions/35569042/ssl-certificate-verify-failed-with-python3
+ssl._create_default_https_context = ssl._create_unverified_context
 
 st.title('NBA Player Stats Exploratory Data Analysis')
 st.markdown("""
